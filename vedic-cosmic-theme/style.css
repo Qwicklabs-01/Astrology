@@ -1,0 +1,45 @@
+/*
+Theme Name: Vedic Cosmic
+Theme URI: https://vediccosmic.com
+Description: A premium Vedic Astrology and Vastu Shastra theme integrated with React-based predictive tools.
+Version: 1.0.1
+Author: Antigravity AI
+Author URI: https://google.com
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: astrology, vedic, vastu, react, dark-mode, gold, spiritual
+Text Domain: vedic-cosmic
+*/
+
+/* 
+   Note: Core styling is handled by Tailwind CSS in assets/index.css
+   This file contains WordPress specific overrides if necessary.
+*/
+
+.text-glow {
+    text-shadow: 0 0 15px rgba(201,168,76,0.6);
+}
+
+.glass-card {
+    background: rgba(14, 17, 24, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.star {
+    animation: twinkle 4s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 120s linear infinite;
+}

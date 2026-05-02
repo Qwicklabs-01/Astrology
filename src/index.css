@@ -1,0 +1,83 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  :root {
+    /* HSL format: Hue Saturation Lightness */
+    --color-primary: 223 30% 5%;
+    --color-secondary: 223 26% 8%;
+    --color-card: 225 25% 9%;
+    --color-gold-light: 45 74% 66%;
+    --color-gold: 44 55% 54%;
+    --color-copper: 27 58% 40%;
+    --color-cream: 43 55% 86%;
+    --color-muted: 42 18% 46%;
+    --color-ruby: 0 53% 35%;
+    --color-teal: 192 49% 32%;
+    --color-celestial: 210 55% 23%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-primary text-cream font-body antialiased;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='4' fill='%23C9A84C' opacity='0.8'/><circle cx='12' cy='12' r='8' stroke='%23C9A84C' stroke-width='1' fill='none' opacity='0.4'/></svg>") 12 12, auto;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-hero tracking-wide;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-white;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 15px hsl(var(--color-gold) / 0.6);
+  }
+  
+  .glass-card {
+    @apply bg-secondary/60 backdrop-blur-xl border border-gold/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)];
+  }
+
+  .hover-glow {
+    @apply transition-all duration-500 hover:shadow-[0_0_30px_hsl(var(--color-gold)_/_0.2)] hover:-translate-y-1 hover:border-gold/40 hover:bg-secondary/80;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--color-secondary));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--color-gold) / 0.5);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--color-gold));
+}
+
+/* Twinkling stars animation */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); box-shadow: 0 0 10px hsl(var(--color-gold-light) / 0.5); }
+}
+
+.star {
+  animation: twinkle 4s ease-in-out infinite;
+}
