@@ -57,7 +57,7 @@ const Blog = () => {
               <h2 className="font-hero text-3xl md:text-4xl text-cream mb-6 group-hover:text-gold-light transition-colors">{featuredPost.title}</h2>
               <p className="font-body text-cream/70 text-lg leading-relaxed mb-8">{featuredPost.excerpt}</p>
               <span className="font-accent text-xs tracking-[0.2em] text-gold uppercase flex items-center group-hover:text-gold-light transition-colors w-fit">
-                Read Article <motion.span className="ml-2" initial={{ x: 0 }} groupHover={{ x: 5 }}>→</motion.span>
+                Read Article <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
               </span>
             </div>
           </div>

@@ -143,26 +143,26 @@ const Panchang = () => {
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
                 
                 {/* Sun & Moon Times */}
-                <div className="glass-card p-6 rounded-xl border border-gold/20 flex flex-wrap gap-8 justify-around bg-secondary/50">
+                <div className="glass-card p-4 sm:p-6 rounded-xl border border-gold/20 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 bg-secondary/50">
                   <div className="text-center">
-                    <div className="text-gold text-3xl mb-2">🌅</div>
-                    <div className="font-accent text-[10px] tracking-widest text-gold/60 uppercase mb-1">Sunrise</div>
-                    <div className="font-hero text-xl text-cream">{panchangData.sunrise}</div>
+                    <div className="text-gold text-2xl sm:text-3xl mb-2">🌅</div>
+                    <div className="font-accent text-[9px] sm:text-[10px] tracking-widest text-gold/60 uppercase mb-1">Sunrise</div>
+                    <div className="font-hero text-lg sm:text-xl text-cream">{panchangData.sunrise}</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-copper text-3xl mb-2">🌇</div>
-                    <div className="font-accent text-[10px] tracking-widest text-gold/60 uppercase mb-1">Sunset</div>
-                    <div className="font-hero text-xl text-cream">{panchangData.sunset}</div>
+                    <div className="text-copper text-2xl sm:text-3xl mb-2">🌇</div>
+                    <div className="font-accent text-[9px] sm:text-[10px] tracking-widest text-gold/60 uppercase mb-1">Sunset</div>
+                    <div className="font-hero text-lg sm:text-xl text-cream">{panchangData.sunset}</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-cream/80 text-3xl mb-2">🌝</div>
-                    <div className="font-accent text-[10px] tracking-widest text-gold/60 uppercase mb-1">Moonrise</div>
-                    <div className="font-hero text-xl text-cream">{panchangData.moonrise}</div>
+                    <div className="text-cream/80 text-2xl sm:text-3xl mb-2">🌝</div>
+                    <div className="font-accent text-[9px] sm:text-[10px] tracking-widest text-gold/60 uppercase mb-1">Moonrise</div>
+                    <div className="font-hero text-lg sm:text-xl text-cream">{panchangData.moonrise}</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-cream/40 text-3xl mb-2">🌚</div>
-                    <div className="font-accent text-[10px] tracking-widest text-gold/60 uppercase mb-1">Moonset</div>
-                    <div className="font-hero text-xl text-cream">{panchangData.moonset}</div>
+                    <div className="text-cream/40 text-2xl sm:text-3xl mb-2">🌚</div>
+                    <div className="font-accent text-[9px] sm:text-[10px] tracking-widest text-gold/60 uppercase mb-1">Moonset</div>
+                    <div className="font-hero text-lg sm:text-xl text-cream">{panchangData.moonset}</div>
                   </div>
                 </div>
 
@@ -218,7 +218,7 @@ const Panchang = () => {
                       </h3>
                       <div className="space-y-3">
                         {panchangData.auspicious.map((item, i) => (
-                          <div key={i} className="flex justify-between items-center bg-primary/40 px-4 py-2 rounded-md">
+                          <div key={i} className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 bg-primary/40 px-4 py-3 rounded-md">
                             <span className="font-body text-cream/90 text-sm">{item.name}</span>
                             <span className="font-accent text-xs text-green-300 tracking-wider">{item.time}</span>
                           </div>
@@ -232,7 +232,7 @@ const Panchang = () => {
                       </h3>
                       <div className="space-y-3">
                         {panchangData.inauspicious.map((item, i) => (
-                          <div key={i} className="flex justify-between items-center bg-primary/40 px-4 py-2 rounded-md">
+                          <div key={i} className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 bg-primary/40 px-4 py-3 rounded-md">
                             <span className="font-body text-cream/90 text-sm">{item.name}</span>
                             <span className="font-accent text-xs text-red-300 tracking-wider">{item.time}</span>
                           </div>

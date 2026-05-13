@@ -55,14 +55,8 @@ const BirthChart = () => {
 
     const planets = planetsData.map(p => {
       let signIndex = Math.floor(nextRandom() * 12);
-      // Ensure Rahu and Ketu are always opposite (6 signs apart)
-      if (p.name === "Ketu") {
-        const rahuIndex = planetsData.findIndex(x => x.name === "Rahu");
-        // This relies on Rahu being generated before Ketu in the planetsData array
-      }
-      
+
       if (p.name === "Rahu") {
-        // Just store signIndex for Rahu to use for Ketu
         p.tempSignIndex = signIndex;
       }
       if (p.name === "Ketu") {
@@ -172,30 +166,30 @@ const BirthChart = () => {
                 <motion.div key="results" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="space-y-6">
                   
                   {/* Summary Bar */}
-                  <div className="glass-card p-6 rounded-xl border border-gold/20 flex flex-wrap gap-6 justify-between bg-secondary/50">
+                  <div className="glass-card p-4 sm:p-6 rounded-xl border border-gold/20 grid grid-cols-2 lg:grid-cols-4 gap-4 bg-secondary/50">
                     <div className="flex flex-col">
-                      <span className="font-accent text-[10px] tracking-widest text-gold/60 uppercase">Lagna (Ascendant)</span>
-                      <span className="font-hero text-2xl text-cream">{results.lagna}</span>
+                      <span className="font-accent text-[10px] tracking-widest text-gold/60 uppercase mb-1">Lagna (Ascendant)</span>
+                      <span className="font-hero text-xl sm:text-2xl text-cream">{results.lagna}</span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="font-accent text-[10px] tracking-widest text-gold/60 uppercase">Moon Sign</span>
-                      <span className="font-hero text-2xl text-cream">{results.rashi}</span>
+                      <span className="font-accent text-[10px] tracking-widest text-gold/60 uppercase mb-1">Moon Sign</span>
+                      <span className="font-hero text-xl sm:text-2xl text-cream">{results.rashi}</span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="font-accent text-[10px] tracking-widest text-gold/60 uppercase">Nakshatra</span>
-                      <span className="font-hero text-2xl text-cream">{results.nakshatra}</span>
+                      <span className="font-accent text-[10px] tracking-widest text-gold/60 uppercase mb-1">Nakshatra</span>
+                      <span className="font-hero text-xl sm:text-2xl text-cream">{results.nakshatra}</span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="font-accent text-[10px] tracking-widest text-gold/60 uppercase">Current Dasha</span>
-                      <span className="font-hero text-2xl text-cream">{results.dasha}</span>
+                      <span className="font-accent text-[10px] tracking-widest text-gold/60 uppercase mb-1">Current Dasha</span>
+                      <span className="font-hero text-sm sm:text-xl text-cream">{results.dasha}</span>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Visual Chart (South Indian Style Mock) */}
-                    <div className="glass-card p-6 rounded-xl border border-gold/20 flex flex-col items-center justify-center min-h-[300px]">
+                    {/* Visual Chart (South Indian Style) */}
+                    <div className="glass-card p-4 sm:p-6 rounded-xl border border-gold/20 flex flex-col items-center justify-center min-h-[300px]">
                       <h4 className="font-accent text-xs tracking-widest text-gold mb-6 uppercase">South Indian Chart</h4>
-                      <div className="w-full max-w-[280px] aspect-square grid grid-cols-4 grid-rows-4 gap-1 p-1 bg-gold/20 rounded-md">
+                      <div className="w-full max-w-[300px] aspect-square grid grid-cols-4 grid-rows-4 gap-1 p-1 bg-gold/20 rounded-md">
                         {/* 16 squares of South Indian Chart */}
                         {Array.from({ length: 16 }).map((_, i) => {
                           const isMiddle = [5,6,9,10].includes(i);
@@ -220,7 +214,7 @@ const BirthChart = () => {
                           let content = results.chartMap[rashiIndexMap[i]] || "";
                           
                           return (
-                            <div key={i} className={`bg-secondary flex flex-wrap items-center justify-center p-1 rounded-sm text-[9px] sm:text-[10px] font-bold ${content.includes('As') ? 'text-gold-light border border-gold shadow-[inset_0_0_10px_rgba(201,168,76,0.2)]' : 'text-cream/80'} gap-1`}>
+                            <div key={i} className={`bg-secondary flex flex-wrap items-center justify-center p-1 rounded-sm text-[8px] sm:text-[10px] font-bold ${content.includes('As') ? 'text-gold-light border border-gold shadow-[inset_0_0_10px_rgba(201,168,76,0.2)]' : 'text-cream/80'} gap-1`}>
                               {content.trim().split(' ').map((p, idx) => (
                                 <span key={idx} className={p === 'As' ? 'text-gold' : ''}>{p}</span>
                               ))}

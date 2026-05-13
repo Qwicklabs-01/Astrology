@@ -51,12 +51,12 @@ const VastuCompass = () => {
           </p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-center lg:items-start justify-center">
+        <div className="flex flex-col lg:flex-row gap-12 items-center justify-center">
           
           {/* Compass Grid */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }}
-            className="w-full max-w-md aspect-square relative"
+            className="w-full max-w-[320px] sm:max-w-md aspect-square relative"
           >
             {/* Compass Ring */}
             <div 
@@ -69,24 +69,24 @@ const VastuCompass = () => {
               <div className="absolute right-0 top-1/2 -translate-y-1/2 -mr-3 text-gold font-accent text-xs">E</div>
             </div>
 
-            <div className="w-full h-full grid grid-cols-3 grid-rows-3 gap-2 relative z-10 p-2 glass-card rounded-xl">
+            <div className="w-full h-full grid grid-cols-3 grid-rows-3 gap-1 relative z-10 p-1 glass-card rounded-xl">
               {vastuZones.map((zone) => (
                 <button
                   key={zone.id}
                   onClick={() => setActiveZone(zone)}
-                  className={`relative overflow-hidden flex flex-col items-center justify-center text-center p-2 rounded-lg transition-all duration-300 border ${
-                    activeZone.id === zone.id 
-                    ? 'border-gold bg-gradient-to-br from-gold/20 to-transparent shadow-[inset_0_0_15px_hsl(var(--color-gold)/0.2)]' 
+                  className={`relative overflow-hidden flex flex-col items-center justify-center text-center p-2 sm:p-3 rounded-lg transition-all duration-300 border ${
+                    activeZone.id === zone.id
+                    ? 'border-gold bg-gradient-to-br from-gold/20 to-transparent shadow-[inset_0_0_15px_hsl(var(--color-gold)/0.2)]'
                     : 'border-white/5 hover:border-gold/30 hover:bg-white/5'
                   }`}
                 >
                   {activeZone.id === zone.id && (
                     <motion.div layoutId="activeGlow" className="absolute inset-0 bg-gold/10" />
                   )}
-                  <span className="font-hero text-sm sm:text-lg text-cream relative z-10 leading-tight">
+                  <span className="font-hero text-[10px] sm:text-xs md:text-sm text-cream relative z-10 leading-tight">
                     {zone.name.split(' ')[0]}<br/>{zone.name.split(' ')[1] || ''}
                   </span>
-                  {zone.id === 'c' && <span className="font-sanskrit text-4xl text-gold/30 absolute opacity-50">ॐ</span>}
+                  {zone.id === 'c' && <span className="font-sanskrit text-2xl sm:text-4xl text-gold/30 absolute opacity-50 select-none">ॐ</span>}
                 </button>
               ))}
             </div>

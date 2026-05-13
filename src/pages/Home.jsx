@@ -43,7 +43,7 @@ const Home = () => {
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="md:w-1/2 pt-12 md:pt-0"
           >
-            <h1 className="font-hero text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-br from-gold-light via-gold to-copper mb-6 leading-[1.1] text-glow pb-2">
+            <h1 className="font-hero text-5xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl text-transparent bg-clip-text bg-gradient-to-br from-gold-light via-gold to-copper mb-6 leading-[1.1] text-glow pb-2">
               Decode the<br/>Language of<br/>the Cosmos
             </h1>
             <p className="font-sub text-xl md:text-2xl text-cream/80 mb-8 italic">
@@ -89,16 +89,26 @@ const Home = () => {
 
       {/* Planetary Ticker */}
       <div className="bg-secondary/50 border-y border-gold/10 py-4 overflow-hidden backdrop-blur-sm">
-        <div className="flex whitespace-nowrap animate-[marquee_40s_linear_infinite] text-gold/80 font-sub text-xl space-x-16">
-          <span>☉ Sun in Aries</span>
-          <span>☽ Moon in Libra</span>
-          <span>♂ Mars in Capricorn</span>
-          <span>☿ Mercury in Pisces</span>
-          <span>♃ Jupiter in Taurus</span>
-          <span>♀ Venus in Pisces</span>
-          <span>♄ Saturn in Aquarius</span>
-          <span>☊ Rahu in Pisces</span>
-          <span>☋ Ketu in Virgo</span>
+        <div className="flex whitespace-nowrap animate-marquee text-gold/80 font-sub text-xl">
+          <span className="mx-8">☉ Sun in Aries</span>
+          <span className="mx-8">☽ Moon in Libra</span>
+          <span className="mx-8">♂ Mars in Capricorn</span>
+          <span className="mx-8">☿ Mercury in Pisces</span>
+          <span className="mx-8">♃ Jupiter in Taurus</span>
+          <span className="mx-8">♀ Venus in Pisces</span>
+          <span className="mx-8">♄ Saturn in Aquarius</span>
+          <span className="mx-8">☊ Rahu in Pisces</span>
+          <span className="mx-8">☋ Ketu in Virgo</span>
+          {/* Duplicate for seamless loop */}
+          <span className="mx-8">☉ Sun in Aries</span>
+          <span className="mx-8">☽ Moon in Libra</span>
+          <span className="mx-8">♂ Mars in Capricorn</span>
+          <span className="mx-8">☿ Mercury in Pisces</span>
+          <span className="mx-8">♃ Jupiter in Taurus</span>
+          <span className="mx-8">♀ Venus in Pisces</span>
+          <span className="mx-8">♄ Saturn in Aquarius</span>
+          <span className="mx-8">☊ Rahu in Pisces</span>
+          <span className="mx-8">☋ Ketu in Virgo</span>
         </div>
       </div>
 

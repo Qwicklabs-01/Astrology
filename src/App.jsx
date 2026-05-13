@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
 import VedicForecast from './components/VedicForecast';
 import Numerology from './components/Numerology';
 import Home from './pages/Home';

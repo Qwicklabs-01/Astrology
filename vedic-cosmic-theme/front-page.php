@@ -47,7 +47,7 @@ get_header(); ?>
                 </div>
 
                 <!-- Main Heading -->
-                <h1 class="font-hero text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-b from-gold-light via-gold to-copper mb-8 leading-[1] tracking-tight text-glow animate-[fade-in_1.5s_ease-out]">
+                <h1 class="font-hero text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-b from-gold-light via-gold to-copper mb-8 leading-[1.1] sm:leading-[1] tracking-tight text-glow animate-[fade-in_1.5s_ease-out]">
                     Vedic<br/><span class="italic font-sub text-cream/90">Cosmic</span>
                 </h1>
 
@@ -57,12 +57,12 @@ get_header(); ?>
                 </p>
 
                 <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-6 mb-16 animate-[fade-in-up_1s_ease-out_0.8s_both]">
-                    <a href="<?php echo esc_url( home_url( '/forecast' ) ); ?>" class="relative group px-10 py-5 overflow-hidden">
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-16 animate-[fade-in-up_1s_ease-out_0.8s_both]">
+                    <a href="<?php echo esc_url( home_url( '/forecast' ) ); ?>" class="relative group px-10 py-5 overflow-hidden w-full sm:w-auto text-center">
                         <div class="absolute inset-0 bg-gradient-to-r from-gold to-copper transition-transform duration-500 group-hover:scale-105"></div>
                         <span class="relative z-10 font-accent font-bold uppercase tracking-[0.2em] text-xs text-primary">Get Your Forecast</span>
                     </a>
-                    <a href="#tools" class="px-10 py-5 border border-gold/40 hover:border-gold text-gold font-accent uppercase tracking-[0.2em] text-xs transition-all backdrop-blur-sm bg-white/5">
+                    <a href="#tools" class="px-10 py-5 border border-gold/40 hover:border-gold text-gold font-accent uppercase tracking-[0.2em] text-xs transition-all backdrop-blur-sm bg-white/5 w-full sm:w-auto text-center">
                         Free Tools
                     </a>
                 </div>

@@ -50,12 +50,12 @@ const InstantAnswers = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/5 blur-[150px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8 sm:mb-12">
           <div className="font-accent text-xs tracking-[0.3em] text-gold/80 mb-4 uppercase">Prashna Shastra</div>
-          <h1 className="font-hero text-4xl sm:text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-gold-light to-copper mb-6">
+          <h1 className="font-hero text-3xl sm:text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-gold-light to-copper mb-4 sm:mb-6">
             The Cosmic Oracle
           </h1>
-          <p className="font-body text-cream/70 italic text-lg">
+          <p className="font-body text-cream/70 italic text-base sm:text-lg px-4">
             Focus your mind on a single, clear question. When you are ready, ask the cosmos for an instant answer.
           </p>
         </motion.div>
@@ -71,7 +71,7 @@ const InstantAnswers = () => {
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               disabled={isConsulting}
-              className="w-full bg-secondary/80 border-b-2 border-gold/30 px-6 py-6 font-hero text-2xl text-center text-cream focus:outline-none focus:border-gold placeholder:text-cream/20 transition-all rounded-t-xl"
+              className="w-full bg-secondary/80 border-b-2 border-gold/30 px-4 sm:px-6 py-4 sm:py-6 font-hero text-lg sm:text-2xl text-center text-cream focus:outline-none focus:border-gold placeholder:text-cream/20 transition-all rounded-t-xl"
             />
             <button 
               type="submit" 
@@ -101,8 +101,8 @@ const InstantAnswers = () => {
                   answer.type === 'negative' ? 'text-red-400' : 'text-gold-light'
                 }`}
               >
-                <div className="text-6xl mb-6 filter drop-shadow-[0_0_15px_currentColor]">{answer.icon}</div>
-                <h3 className="font-hero text-3xl sm:text-4xl leading-tight max-w-xl mx-auto drop-shadow-md">
+                <div className="text-5xl sm:text-6xl mb-4 sm:mb-6 filter drop-shadow-[0_0_15px_currentColor]">{answer.icon}</div>
+                <h3 className="font-hero text-2xl sm:text-3xl md:text-4xl leading-tight max-w-xl mx-auto drop-shadow-md">
                   "{answer.text}"
                 </h3>
               </motion.div>

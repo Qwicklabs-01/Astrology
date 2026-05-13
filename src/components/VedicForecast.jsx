@@ -109,13 +109,7 @@ const antardasha = [
   { label: "Sat/Mercury", period: "2031 → 2033", status: "future" },
 ];
 
-const radarData = yearData.map(y => ({
-  year: y.label,
-  Career: y.career,
-  Finance: y.finance,
-  Health: y.health,
-  Relations: y.relationships,
-}));
+// radarData is built inline from results.yearData in the Radar tab
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
@@ -183,6 +177,7 @@ export default function VedicForecast() {
       };
     });
 
+    setActiveYear(0); // Reset selected year whenever a new chart is cast
     setResults({
       dob: formData.dob,
       pob: formData.pob,
@@ -286,17 +281,17 @@ export default function VedicForecast() {
         {activeTab === "overview" && (
           <div className="space-y-6">
             {/* Year Selector */}
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+            <div className="flex sm:grid sm:grid-cols-5 gap-3 overflow-x-auto pb-4 sm:pb-0 scrollbar-hide">
               {results.yearData.map((y, i) => (
                 <button key={i} onClick={() => setActiveYear(i)} className={`
-                  p-3 rounded-lg text-center transition-all flex flex-col items-center justify-center
+                  p-3 rounded-lg text-center transition-all flex flex-col items-center justify-center min-w-[120px] sm:min-w-0
                   ${activeYear === i ? 'bg-gold/10 border-gold/50 border' : 'glass-card border-transparent hover:border-gold/30'}
                 `}>
                   <div className="text-2xl mb-1">{y.icon}</div>
-                  <div className={`text-xs font-bold font-accent tracking-widest uppercase ${activeYear === i ? 'text-gold' : 'text-cream/50'}`}>
+                  <div className={`text-[10px] sm:text-xs font-bold font-accent tracking-widest uppercase ${activeYear === i ? 'text-gold' : 'text-cream/50'}`}>
                     {y.label}
                   </div>
-                  <div className={`text-[10px] font-accent mt-1 ${activeYear === i ? 'text-cream/80' : 'text-cream/30'}`}>
+                  <div className={`text-[9px] sm:text-[10px] font-accent mt-1 ${activeYear === i ? 'text-cream/80' : 'text-cream/30'}`}>
                     {y.year}
                   </div>
                   <div className="w-full mt-3 h-[3px] rounded-full bg-black/40 overflow-hidden">
@@ -329,7 +324,7 @@ export default function VedicForecast() {
               </p>
               
               {/* Score bars */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 {[
                   { label: "Career", value: selected.career, color: "#D4A843" },
                   { label: "Finance", value: selected.finance, color: "#4A8FA3" },
@@ -394,28 +389,28 @@ export default function VedicForecast() {
               <div className="text-[11px] font-accent tracking-[0.3em] text-cream/50 mb-6 uppercase">
                 Mahadasha Lifecycle (Birth → Age 63)
               </div>
-              <div className="relative h-16 bg-black/50 rounded-lg overflow-hidden flex">
+              <div className="relative h-20 sm:h-16 bg-black/50 rounded-lg overflow-hidden flex overflow-x-auto sm:overflow-visible">
                 {dashaTimeline.map((d, i) => {
                   const total = 2064 - 2001;
                   const width = ((d.end - d.start) / total) * 100;
                   const isCurrent = d.name === "Jupiter MD";
                   const isNext = d.name === "Saturn MD";
                   return (
-                    <div key={i} className="h-full relative flex flex-col items-center justify-center" style={{
-                      width: `${width}%`,
+                    <div key={i} className="h-full relative flex flex-col items-center justify-center shrink-0 sm:shrink" style={{
+                      width: `${Math.max(width, 15)}%`,
                       background: isCurrent ? `${d.color}33` : isNext ? `${d.color}22` : `${d.color}18`,
                       borderLeft: isCurrent ? `3px solid ${d.color}` : isNext ? `2px solid ${d.color}88` : "none",
                       borderRight: "1px solid rgba(0,0,0,0.5)",
                     }}>
-                      <div className="text-[10px] font-accent tracking-widest text-center px-1" style={{ color: isCurrent ? d.color : isNext ? `${d.color}AA` : 'rgba(255,255,255,0.3)' }}>
+                      <div className="text-[9px] sm:text-[10px] font-accent tracking-widest text-center px-1" style={{ color: isCurrent ? d.color : isNext ? `${d.color}AA` : 'rgba(255,255,255,0.3)' }}>
                         {isCurrent ? "▶ " : ""}{d.name}
                       </div>
-                      <div className="text-[9px] text-cream/30 mt-1 font-body">{d.start}–{d.end}</div>
+                      <div className="text-[8px] sm:text-[9px] text-cream/30 mt-1 font-body">{d.start}–{d.end}</div>
                     </div>
                   );
                 })}
                 {/* NOW marker */}
-                <div className="absolute top-0 bottom-0 w-[2px] bg-gold opacity-80" style={{ left: `${((2026 - 2001) / (2064 - 2001)) * 100}%` }}>
+                <div className="absolute top-0 bottom-0 w-[2px] bg-gold opacity-80 hidden sm:block" style={{ left: `${((2026 - 2001) / (2064 - 2001)) * 100}%` }}>
                   <div className="absolute -top-5 -left-3 text-gold text-[9px] font-accent tracking-widest">NOW</div>
                 </div>
               </div>
@@ -457,7 +452,7 @@ export default function VedicForecast() {
             </div>
 
             {/* Overall scores bar chart */}
-            <div className="glass-card rounded-xl p-6 sm:p-8">
+            <div className="glass-card rounded-xl p-4 sm:p-6 sm:p-8">
               <div className="text-[11px] font-accent tracking-[0.3em] text-cream/50 mb-6 uppercase">
                 Year-By-Year Comparative Scores
               </div>

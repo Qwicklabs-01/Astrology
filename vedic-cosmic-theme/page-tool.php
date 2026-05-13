@@ -9,7 +9,7 @@ get_header();
 
 // Map slugs to React root IDs
 $slug = get_post_field( 'post_name', get_the_ID() );
-$root_id = 'root'; // default
+$root_id = 'forecast-root'; // default fallback
 
 switch ($slug) {
     case 'forecast':

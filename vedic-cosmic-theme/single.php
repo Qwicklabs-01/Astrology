@@ -5,6 +5,7 @@
 
 get_header(); ?>
 
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <!-- Post Header -->
     <header class="relative h-[60vh] flex items-center justify-center overflow-hidden">
@@ -32,12 +33,7 @@ get_header(); ?>
     <div class="py-20 bg-primary">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="font-body text-xl text-cream/80 leading-relaxed prose prose-invert prose-gold max-w-none">
-                <?php
-                while ( have_posts() ) :
-                    the_post();
-                    the_content();
-                endwhile;
-                ?>
+                <?php the_content(); ?>
             </div>
 
             <!-- Tags & Share -->
@@ -57,5 +53,6 @@ get_header(); ?>
         </div>
     </div>
 </article>
+<?php endwhile; endif; ?>
 
 <?php get_footer(); ?>

@@ -67,32 +67,50 @@ get_header(); ?>
                 </div>
             </div>
 
-            <!-- Contact Form (Static Representation for Theme) -->
             <div class="glass-card p-10 md:p-16 border border-gold/10 rounded-2xl">
                 <h3 class="font-hero text-2xl text-cream mb-8">Send a Message</h3>
-                <form class="space-y-6">
+
+                <?php if ( isset($_GET['sent']) && $_GET['sent'] === '1' ) : ?>
+                    <div class="mb-6 p-4 border border-gold/30 bg-gold/10 text-gold font-accent text-xs tracking-widest uppercase text-center">
+                        ✦ Your message has been sent to the cosmos. We will respond soon. ✦
+                    </div>
+                <?php endif; ?>
+
+                <form method="post" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" class="space-y-6">
+                    <?php wp_nonce_field( 'vedic_contact_form', 'vedic_contact_nonce' ); ?>
+                    <input type="hidden" name="action" value="vedic_contact_submit">
+                    <!-- Honeypot anti-spam field -->
+                    <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off">
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
-                            <label class="font-accent text-[10px] tracking-widest text-gold uppercase">Full Name</label>
-                            <input type="text" class="w-full bg-primary/50 border border-gold/20 p-4 text-cream focus:border-gold outline-none transition-all">
+                            <label for="contact_name" class="font-accent text-[10px] tracking-widest text-gold uppercase">Full Name</label>
+                            <input id="contact_name" type="text" name="contact_name" required
+                                   class="w-full bg-primary/50 border border-gold/20 p-4 text-cream focus:border-gold outline-none transition-all"
+                                   placeholder="Your full name">
                         </div>
                         <div class="space-y-2">
-                            <label class="font-accent text-[10px] tracking-widest text-gold uppercase">Email Address</label>
-                            <input type="email" class="w-full bg-primary/50 border border-gold/20 p-4 text-cream focus:border-gold outline-none transition-all">
+                            <label for="contact_email" class="font-accent text-[10px] tracking-widest text-gold uppercase">Email Address</label>
+                            <input id="contact_email" type="email" name="contact_email" required
+                                   class="w-full bg-primary/50 border border-gold/20 p-4 text-cream focus:border-gold outline-none transition-all"
+                                   placeholder="your@email.com">
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <label class="font-accent text-[10px] tracking-widest text-gold uppercase">Subject</label>
-                        <select class="w-full bg-primary/50 border border-gold/20 p-4 text-cream focus:border-gold outline-none transition-all">
-                            <option>Astrology Consultation</option>
-                            <option>Vastu Correction</option>
-                            <option>Numerology Analysis</option>
-                            <option>General Inquiry</option>
+                        <label for="contact_subject" class="font-accent text-[10px] tracking-widest text-gold uppercase">Subject</label>
+                        <select id="contact_subject" name="contact_subject"
+                                class="w-full bg-primary/50 border border-gold/20 p-4 text-cream focus:border-gold outline-none transition-all">
+                            <option value="astrology">Astrology Consultation</option>
+                            <option value="vastu">Vastu Correction</option>
+                            <option value="numerology">Numerology Analysis</option>
+                            <option value="general">General Inquiry</option>
                         </select>
                     </div>
                     <div class="space-y-2">
-                        <label class="font-accent text-[10px] tracking-widest text-gold uppercase">Message</label>
-                        <textarea rows="5" class="w-full bg-primary/50 border border-gold/20 p-4 text-cream focus:border-gold outline-none transition-all"></textarea>
+                        <label for="contact_message" class="font-accent text-[10px] tracking-widest text-gold uppercase">Message</label>
+                        <textarea id="contact_message" name="contact_message" rows="5" required
+                                  class="w-full bg-primary/50 border border-gold/20 p-4 text-cream focus:border-gold outline-none transition-all"
+                                  placeholder="Share your question with the cosmos..."></textarea>
                     </div>
                     <button type="submit" class="w-full py-5 bg-gold text-primary font-accent font-bold uppercase tracking-[0.2em] text-xs hover:bg-gold-light transition-all">
                         Send to Oracle

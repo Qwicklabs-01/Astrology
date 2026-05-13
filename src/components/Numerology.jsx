@@ -178,19 +178,19 @@ const Numerology = () => {
                 >
                   {/* Core Numbers */}
                   <div className="glass-card p-6 sm:p-8 rounded-xl border border-gold/20">
-                    <h3 className="font-hero text-2xl text-gold-light mb-6 border-b border-gold/10 pb-4">Your Core Numbers</h3>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <h3 className="font-hero text-xl sm:text-2xl text-gold-light mb-6 border-b border-gold/10 pb-4">Your Core Numbers</h3>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                       {[
                         { label: "Mulank", value: results.mulank, desc: "Influence starts from birth" },
                         { label: "Bhagyank", value: results.bhagyank, desc: "Strongest after age 35" },
                         { label: "Kua Number", value: results.kua, desc: "Your Angel Number" },
                         { label: "Name Number", value: results.nameNum, desc: "Chaldean System" }
                       ].map((stat, i) => (
-                        <div key={i} className="bg-primary/40 border border-gold/10 p-4 rounded-lg text-center relative overflow-hidden group">
+                        <div key={i} className="bg-primary/40 border border-gold/10 p-3 sm:p-4 rounded-lg text-center relative overflow-hidden group">
                           <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                          <div className="font-accent text-[10px] tracking-widest text-gold/60 uppercase mb-2">{stat.label}</div>
-                          <div className="font-hero text-4xl text-cream mb-2 drop-shadow-[0_0_5px_hsl(var(--color-gold)/0.3)]">{stat.value}</div>
-                          <div className="font-body text-[9px] text-cream/40 leading-tight">{stat.desc}</div>
+                          <div className="font-accent text-[9px] sm:text-[10px] tracking-widest text-gold/60 uppercase mb-2">{stat.label}</div>
+                          <div className="font-hero text-3xl sm:text-4xl text-cream mb-2 drop-shadow-[0_0_5px_hsl(var(--color-gold)/0.3)]">{stat.value}</div>
+                          <div className="font-body text-[8px] sm:text-[9px] text-cream/40 leading-tight">{stat.desc}</div>
                         </div>
                       ))}
                     </div>

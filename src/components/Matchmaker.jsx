@@ -112,14 +112,14 @@ const Matchmaker = () => {
                     <label className="block font-accent text-xs tracking-widest text-gold mb-1 uppercase">Name</label>
                     <input type="text" required value={partner1.name} onChange={(e) => setPartner1({...partner1, name: e.target.value})} className="w-full bg-primary/50 border border-gold/30 rounded-md px-3 py-2 font-body text-cream focus:outline-none focus:border-gold" />
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block font-accent text-xs tracking-widest text-gold mb-1 uppercase">Date</label>
-                      <input type="date" required value={partner1.dob} onChange={(e) => setPartner1({...partner1, dob: e.target.value})} className="w-full bg-primary/50 border border-gold/30 rounded-md px-3 py-2 font-body text-cream focus:outline-none focus:border-gold" style={{ colorScheme: 'dark' }} />
+                      <label className="block font-accent text-xs tracking-widest text-gold mb-2 uppercase">Date</label>
+                      <input type="date" required value={partner1.dob} onChange={(e) => setPartner1({...partner1, dob: e.target.value})} className="w-full bg-primary/50 border border-gold/30 rounded-md px-4 py-2 font-body text-cream focus:outline-none focus:border-gold" style={{ colorScheme: 'dark' }} />
                     </div>
                     <div>
-                      <label className="block font-accent text-xs tracking-widest text-gold mb-1 uppercase">Time</label>
-                      <input type="time" required value={partner1.tob} onChange={(e) => setPartner1({...partner1, tob: e.target.value})} className="w-full bg-primary/50 border border-gold/30 rounded-md px-3 py-2 font-body text-cream focus:outline-none focus:border-gold" style={{ colorScheme: 'dark' }} />
+                      <label className="block font-accent text-xs tracking-widest text-gold mb-2 uppercase">Time</label>
+                      <input type="time" required value={partner1.tob} onChange={(e) => setPartner1({...partner1, tob: e.target.value})} className="w-full bg-primary/50 border border-gold/30 rounded-md px-4 py-2 font-body text-cream focus:outline-none focus:border-gold" style={{ colorScheme: 'dark' }} />
                     </div>
                   </div>
                 </div>
@@ -140,14 +140,14 @@ const Matchmaker = () => {
                     <label className="block font-accent text-xs tracking-widest text-gold mb-1 uppercase">Name</label>
                     <input type="text" required value={partner2.name} onChange={(e) => setPartner2({...partner2, name: e.target.value})} className="w-full bg-primary/50 border border-gold/30 rounded-md px-3 py-2 font-body text-cream focus:outline-none focus:border-gold" />
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block font-accent text-xs tracking-widest text-gold mb-1 uppercase">Date</label>
-                      <input type="date" required value={partner2.dob} onChange={(e) => setPartner2({...partner2, dob: e.target.value})} className="w-full bg-primary/50 border border-gold/30 rounded-md px-3 py-2 font-body text-cream focus:outline-none focus:border-gold" style={{ colorScheme: 'dark' }} />
+                      <label className="block font-accent text-xs tracking-widest text-gold mb-2 uppercase">Date</label>
+                      <input type="date" required value={partner2.dob} onChange={(e) => setPartner2({...partner2, dob: e.target.value})} className="w-full bg-primary/50 border border-gold/30 rounded-md px-4 py-2 font-body text-cream focus:outline-none focus:border-gold" style={{ colorScheme: 'dark' }} />
                     </div>
                     <div>
-                      <label className="block font-accent text-xs tracking-widest text-gold mb-1 uppercase">Time</label>
-                      <input type="time" required value={partner2.tob} onChange={(e) => setPartner2({...partner2, tob: e.target.value})} className="w-full bg-primary/50 border border-gold/30 rounded-md px-3 py-2 font-body text-cream focus:outline-none focus:border-gold" style={{ colorScheme: 'dark' }} />
+                      <label className="block font-accent text-xs tracking-widest text-gold mb-2 uppercase">Time</label>
+                      <input type="time" required value={partner2.tob} onChange={(e) => setPartner2({...partner2, tob: e.target.value})} className="w-full bg-primary/50 border border-gold/30 rounded-md px-4 py-2 font-body text-cream focus:outline-none focus:border-gold" style={{ colorScheme: 'dark' }} />
                     </div>
                   </div>
                 </div>
@@ -181,7 +181,13 @@ const Matchmaker = () => {
                     <div className="font-hero text-7xl text-gold-light mb-2 drop-shadow-[0_0_15px_rgba(201,168,76,0.5)]">
                       {results.score} <span className="text-3xl text-gold/50">/ {results.outOf}</span>
                     </div>
-                    <div className="inline-block px-4 py-1 border border-green-500/50 bg-green-500/10 text-green-400 font-accent text-xs uppercase tracking-widest rounded-full mb-6">
+                    <div className={`inline-block px-4 py-1 border font-accent text-xs uppercase tracking-widest rounded-full mb-6 ${
+                      results.status === 'Excellent Match'
+                        ? 'border-green-500/50 bg-green-500/10 text-green-400'
+                        : results.status === 'Average Match'
+                        ? 'border-amber-500/50 bg-amber-500/10 text-amber-400'
+                        : 'border-red-500/50 bg-red-500/10 text-red-400'
+                    }`}>
                       {results.status}
                     </div>
                     <p className="font-body text-cream/80 leading-relaxed max-w-lg mx-auto">

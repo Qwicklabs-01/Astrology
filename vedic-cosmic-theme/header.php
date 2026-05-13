@@ -23,7 +23,7 @@
 <?php wp_body_open(); ?>
 
 <div id="page" class="site flex flex-col min-h-screen">
-    <header id="masthead" class="site-header fixed top-0 w-full z-[100] transition-all duration-500" id="main-header">
+    <header id="masthead" class="site-header fixed top-0 w-full z-[100] transition-all duration-500">
         <!-- Top Bar -->
         <div class="bg-primary/90 backdrop-blur-sm text-gold py-1.5 text-[10px] font-accent tracking-[0.4em] border-b border-gold/10 text-center uppercase">
             ✦ Ancient Vedic Wisdom for the Modern Soul ✦
@@ -74,7 +74,7 @@
             </div>
 
             <!-- Mobile Menu Overlay -->
-            <div id="mobile-menu" class="hidden fixed inset-0 z-[110] bg-primary/98 backdrop-blur-2xl flex flex-col items-center justify-center space-y-8 animate-fade-in p-10">
+            <div id="mobile-menu" class="fixed inset-0 z-[110] bg-primary/98 backdrop-blur-2xl flex-col items-center justify-center space-y-8 animate-fade-in p-10" style="display:none;">
                 <button id="mobile-menu-close" class="absolute top-10 right-10 text-gold p-2">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
@@ -109,6 +109,7 @@
         // Header Scroll Effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header nav');
+            if (!header) return;
             if (window.scrollY > 50) {
                 header.classList.add('py-2', 'bg-secondary/90');
                 header.classList.remove('py-4', 'bg-secondary/40');
@@ -118,18 +119,22 @@
             }
         });
 
-        // Mobile Menu
+        // Mobile Menu — use style.display to avoid Tailwind hidden/flex conflict
         const toggle = document.getElementById('mobile-menu-toggle');
-        const close = document.getElementById('mobile-menu-close');
+        const closeBtn = document.getElementById('mobile-menu-close');
         const menu = document.getElementById('mobile-menu');
 
-        toggle?.addEventListener('click', () => {
-            menu.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        });
+        if (toggle && menu) {
+            toggle.addEventListener('click', () => {
+                menu.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        }
 
-        close?.addEventListener('click', () => {
-            menu.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        });
+        if (closeBtn && menu) {
+            closeBtn.addEventListener('click', () => {
+                menu.style.display = 'none';
+                document.body.style.overflow = '';
+            });
+        }
     </script>

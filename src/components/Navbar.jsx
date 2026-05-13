@@ -47,8 +47,12 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-primary text-gold text-center py-2 text-sm font-accent tracking-widest border-b border-gold/10 relative z-50">
-        <marquee scrollamount="3">✦ Offering Online & In-Person Consultations · India & Worldwide ✦</marquee>
+      <div className="bg-primary text-gold py-2 text-sm font-accent tracking-widest border-b border-gold/10 relative z-50 overflow-hidden">
+        <div className="flex whitespace-nowrap animate-marquee">
+          <span className="mx-8">✦ Offering Online &amp; In-Person Consultations · India &amp; Worldwide ✦</span>
+          <span className="mx-8">✦ Offering Online &amp; In-Person Consultations · India &amp; Worldwide ✦</span>
+          <span className="mx-8">✦ Offering Online &amp; In-Person Consultations · India &amp; Worldwide ✦</span>
+        </div>
       </div>
       <motion.nav
         initial={{ y: -100 }}
@@ -83,7 +87,7 @@ const Navbar = () => {
                     className="font-accent uppercase text-sm tracking-widest text-cream/80 hover:text-gold transition-colors relative group"
                   >
                     {link.name}
-                    <motion.span 
+                    <motion.span
                       className="absolute -bottom-1 left-0 h-[2px] bg-gold"
                       initial={{ width: 0 }}
                       whileHover={{ width: '100%' }}
