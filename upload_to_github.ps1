@@ -3,7 +3,7 @@ Write-Host "Checking git status..."
 git status
 
 Write-Host "Adding all files..."
-git add .
+git add -A
 
 Write-Host "Committing changes..."
 git commit -m "Update astrology tool and theme files"
